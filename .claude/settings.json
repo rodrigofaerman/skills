@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "rodrigofaerman-skills": {
+      "source": { "source": "github", "repo": "rodrigofaerman/skills" }
+    }
+  },
+  "enabledPlugins": {
+    "jev-prompt-grader@rodrigofaerman-skills": true
+  }
+}
