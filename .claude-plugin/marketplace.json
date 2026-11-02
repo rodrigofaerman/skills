@@ -1,0 +1,11 @@
+{
+  "name": "rodrigofaerman-skills",
+  "owner": { "name": "Rodrigo Faerman" },
+  "plugins": [
+    {
+      "name": "jev-prompt-grader",
+      "source": "./plugins/jev-prompt-grader",
+      "description": "JEV grades every prompt (Excellent…Horrible) and rewrites it before sending when it is not Excellent"
+    }
+  ]
+}

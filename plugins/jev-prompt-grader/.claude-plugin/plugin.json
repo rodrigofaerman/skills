@@ -1,0 +1,1 @@
+{ "name": "jev-prompt-grader", "version": "0.1.0", "description": "JEV avalia a qualidade de cada prompt: Excellent, Good, Average, Bad ou Horrible", "types": "./types/index.d.ts", "license": "MIT", "author": { "name": "Rodrigo Faerman" } }
