@@ -35,7 +35,15 @@ For cloud sessions on a repository, add to that repository's `.claude/settings.j
 
 ## jev-grader (skill for the Claude app: web, mobile, desktop chat)
 
-`skills/jev-grader/SKILL.md`. Zip the `jev-grader` folder and upload it in claude.ai → Settings → Capabilities → Skills. Needs the Composio connector with the `jev` toolkit on your claude.ai account. It runs when asked ("grade this with JEV"); to make it near-automatic, add to Settings → Profile → personal preferences: *"Before answering requests of 6+ words, use the jev-grader skill."* A skill cannot intercept or replace a prompt before it is sent; it grades, shows the rewrite and answers it.
+`skills/jev-grader/SKILL.md`. Zip the `jev-grader` folder and upload it in claude.ai → Settings → Capabilities → Skills (remove the previous version first; both use the name `jev-grader`). Needs the Composio connector with the `jev` toolkit on your claude.ai account. It runs when asked ("grade this with JEV"); to make it near-automatic, add to Settings → Profile → personal preferences: *"Before answering, use the jev-grader skill; it decides which messages to grade."* A skill cannot intercept or replace a prompt before it is sent; it grades, shows the rewrite and answers it.
+
+What it does (v2):
+
+- **Grades in context.** It sends JEV a short summary of the conversation along with the prompt, so follow-ups are not penalized for references the conversation already resolves. It also classifies the request type (task, question, creative or exploratory) and judges the prompt against what that type needs.
+- **Chooses which messages to grade.** It grades the first message of a task or topic. It skips follow-ups, confirmations, answers to its own questions, and prompts that contain sensitive data, which are never sent to JEV.
+- **Shows a clear result.** The result line has the score, the most likely grade with its probability, near ties (for example `Bad/Average`) and a secondary weakness. It adds a one-line reusable tip.
+- **Acts by grade.** Good gets no rewrite. Average and Bad are rewritten. When the rewrite needs facts only the user has, it asks 2–4 questions instead of answering a template. Horrible gets clarifying questions.
+- **Modes.** `JEV on` (default), `JEV score` (grade and tip only), `JEV full` (also re-grades the rewrite and shows `3.6 → 7.6`), `JEV off`, `skip JEV` (current message only) and `JEV summary` (session report with trend and most common weakness).
 
 ## License
 
